@@ -87,6 +87,12 @@ public class NasaRestAssured {
 		System.out.println(jp.get("reason"));
 		Assert.assertEquals(jp.get("reason"), "'q' text search parameter or other keywords.");
 	}
+	@Test
+	public void verifyingHeader() {
+
+		given().param("nasa_id", "PIA12909").when().get(baseUrl).then().assertThat().statusCode(200)
+				.contentType(ContentType.JSON).header("Content-Length", "970");
+	}
 	
 
 }
